@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "VolgaSprint",
   description: "Notes while VolgaSprinting",
+  base: '/volgasprint/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
