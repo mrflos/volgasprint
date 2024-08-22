@@ -10,7 +10,8 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Nix projects', link: '/nix-projects' },
-      { text: 'Basics in electronics', link: '/electronics' }
+      { text: 'Basics in electronics', link: '/electronics' },
+      { text: 'Tips and tricks', link: '/tips-n-tricks' }
     ],
 
     sidebar: [
@@ -18,13 +19,14 @@ export default defineConfig({
         text: 'Menu',
         items: [
           { text: 'Nix projects', link: '/nix-projects' },
-          { text: 'Basics in electronics', link: '/electronics' }
+          { text: 'Basics in electronics', link: '/electronics' },
+          { text: 'Tips and tricks', link: '/tips-n-tricks' }
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/mrflos/volgasprint' }
     ]
   }
 })
