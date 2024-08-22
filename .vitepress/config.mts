@@ -9,15 +9,16 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Nix projects', link: '/nix-projects' },
+      { text: 'Basics in electronics', link: '/electronics' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Menu',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Nix projects', link: '/nix-projects' },
+          { text: 'Basics in electronics', link: '/electronics' }
         ]
       }
     ],
