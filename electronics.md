@@ -9,7 +9,7 @@
 
 ## The multimeter
 
-![multimeter](./multimeter.jpeg)
+![multimeter](./public/multimeter.jpeg)
 
 If measuring voltage, then beware of not creating short circuits while not in the voltage mode with your cables, same for currents
 On technical documentation with schematics, you will find the numbers like test point numbers (TPxx)
