@@ -10,12 +10,25 @@ ERIS stands for Encoding for Robust Immutable Storage. It supports different net
 
 The recommended implementation is the one in Go, [eris-go](https://codeberg.org/eris/eris-go) (at the moment, it has the most features implemented).
 
+### Compile from the source
+
 You can do a `go build` in the source code folder to compile your own (supported architectures are darwin, dragonfly, freebsd, linux, netbsd, openbsd and solaris, but some may not have fuse or specific fs driver compatibility). 
 
 We can move the binary to an accessible path `cp eris-go /usr/local/bin/eris-go`.
 
-> [!TIP]
-> For Nix OS users, you can run `nix-shell -p eris-go` to get the program. There also is a convenient nix module to get your server running on Nix OS cf. <https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server>
+### Use the nix package 
+
+You can run `nix-shell -p eris-go` to get the program in a temporary shell, or add the `eris-go` package to your configuration to have it permanently.
+
+### Use the nix module 
+
+There also is a convenient nix module to get your `eris-go` server running on Nix OS cf. <https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server>
+
+```nix
+x
+```
+
+## Starting your server
 
 ### Choosing a backend
 
@@ -38,7 +51,6 @@ We can move the binary to an accessible path `cp eris-go /usr/local/bin/eris-go`
 You can use **9p address**, **coap host:port** and **http host:port**.
 All the three together is possible, but only one option per protocol.
 
-## Starting your server
 
 In order to get your ERIS server to start you need to export in your environment `ERIS_STORE_URL` that may contain one or more resources urls to ERIS servers, separated by spaces.
 
