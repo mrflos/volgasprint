@@ -5,28 +5,43 @@ export default defineConfig({
   title: "VolgaSprint",
   description: "Notes while VolgaSprinting",
   base: '/volgasprint/',
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    footer: {
+      message: 'From Russia with ❤️',
+      copyright: 'Copyleft © 2024-present mrflos - AGPL3 licence'
+    },
+    logo: '/volgasprint_ru.svg',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Nix projects', link: '/nix-projects' },
-      { text: 'Basics in electronics', link: '/electronics' },
-      { text: 'Tips and tricks', link: '/tips-n-tricks' }
+      { text: 'Collective notes', link: 'https://pad.lassul.us/veFzwAxHRk2nWQxG6pjQiA' },
     ],
-
+    search: {
+      provider: 'local'
+    },
     sidebar: [
       {
-        text: 'Menu',
+        text: 'Nix OS Projects',
         items: [
-          { text: 'Nix projects', link: '/nix-projects' },
+          { text: 'The Nix cache server', link: '/nix-cache-server' },
+          { text: 'Packaging YesWiki', link: '/yeswiki' },
+        ]
+      },
+      {
+        text: 'Other projects / misc',
+        items: [
           { text: 'Basics in electronics', link: '/electronics' },
-          { text: 'Tips and tricks', link: '/tips-n-tricks' }
+          { text: 'ERIS Cookbook', link: '/eris' },
+          { text: 'Tips and tricks', link: '/tips-n-tricks' },
+          { text: 'Links', link: '/links' },
         ]
       }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/mrflos/volgasprint' }
+      { icon: 'github', link: 'https://github.com/mrflos/volgasprint' },
+      { icon: 'mastodon', link: 'https://mastodon.cc/@mrflos' }
     ]
   }
 })

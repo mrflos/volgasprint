@@ -1,0 +1,20 @@
+:root {
+  --vp-c-default-soft: #d9d9f2;
+  --vp-nav-height: 84px;
+  --vp-nav-logo-height: 64px;
+}
+
+.title img {
+  padding: .5em;
+  border-radius: 2em;
+}
+
+.VPHero.has-image .image-bg,
+.title img {
+  background: #d9d9f2;
+}
+
+.dark .VPHero.has-image .image-bg,
+.dark .title img {
+  background: transparent;
+}
