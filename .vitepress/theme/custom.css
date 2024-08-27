@@ -1,5 +1,4 @@
 :root {
-  --vp-c-default-soft: #d9d9f2;
   --vp-nav-height: 84px;
   --vp-nav-logo-height: 64px;
 }
@@ -18,3 +17,12 @@
 .dark .title img {
   background: transparent;
 }
+
+.VPFeatures .icon {
+  background-color: #d9d9f2;
+}
+
+.dark .VPFeatures .icon {
+  background-color: #2b2f36;
+}
+
