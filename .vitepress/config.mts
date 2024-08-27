@@ -5,6 +5,9 @@ export default defineConfig({
   title: "VolgaSprint",
   description: "Notes while VolgaSprinting",
   base: '/volgasprint/',
+  head: [
+    ['link', { rel: 'shortcut icon', href: 'volgasprint_ru.svg', type: 'image/svg' }]
+  ],
   lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
