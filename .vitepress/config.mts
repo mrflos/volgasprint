@@ -31,8 +31,8 @@ export default defineConfig({
       {
         text: 'Other projects / misc',
         items: [
-          { text: 'Basics in electronics', link: '/electronics' },
           { text: 'ERIS Cookbook', link: '/eris' },
+          { text: 'Basics in electronics', link: '/electronics' },
           { text: 'Tips and tricks', link: '/tips-n-tricks' },
           { text: 'Links', link: '/links' },
         ]
