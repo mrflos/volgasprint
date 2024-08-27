@@ -15,7 +15,7 @@ You can do a `go build` in the source code folder to compile your own (supported
 We can move the binary to an accessible path `cp eris-go /usr/local/bin/eris-go`.
 
 > [!TIP]
-> There is a convenient nix module to get your server running on Nix OS cf. <https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server>
+> For Nix OS users, you can run `nix-shell -p eris-go` to get the program. There also is a convenient nix module to get your server running on Nix OS cf. <https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server>
 
 ### Choosing a backend
 
@@ -36,16 +36,18 @@ We can move the binary to an accessible path `cp eris-go /usr/local/bin/eris-go`
 ### Choosing a network protocol
 
 You can use **9p address**, **coap host:port** and **http host:port**.
-All the three together is possible, but only one per protocol
+All the three together is possible, but only one option per protocol.
 
 ## Starting your server
 
 In order to get your ERIS server to start you need to export in your environment `ERIS_STORE_URL` that may contain one or more resources urls to ERIS servers, separated by spaces.
 
-For now, let's use badger, the recommended backend for local storage and have a unique server with get and put access: 
+For now, let's use badger, the recommended backend for local storage and have a unique server with get and put access : 
 
 ```bash
-export ERIS_STORE_URL='badger+file:///var/eris/storage?put&get'
+ERIS_FOLDER=~/eris/storage # or any folder you have access to
+mkdir -p $ERIS_FOLDER
+export ERIS_STORE_URL="badger+file://$ERIS_FOLDER?put&get"
 ```
 
 
@@ -56,7 +58,7 @@ eris-go server -coap 127.0.0.1:5683 -http 127.0.0.1:8080 -encode -decode
 ```
 
 > [!TIP]
-> the `-encode` and `-decode` parameters are necessary if you want to transfert files from/to and classic filesystem.
+> the `-encode` and `-decode` parameters are necessary if you want to transfer files from/to and classic file-system.
 
 ## Adding files to your server
 
@@ -71,7 +73,7 @@ This command returns an URN that identifies the content sent.
 > This URN is the only 
 
 ```bash
-eris-go put -convergent < /path/to/file > /var/eris/*file*.eris
+eris-go put -convergent < /path/to/file > ~/eris/*file*.eris
 ```
 
 ## Getting files from your server
