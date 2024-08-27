@@ -9,7 +9,7 @@
 
 ## The multimeter
 
-![multimeter](./multimeter.jpeg)
+![multimeter](/multimeter.jpeg)
 
 If measuring voltage, then beware of not creating short circuits while not in the voltage mode with your cables, same for currents (**but as a safe default, voltage mode is less risky for short circuits**).
 
