@@ -58,7 +58,6 @@ For now, let's use badger, the recommended backend for local storage and have a 
 
 ```bash
 ERIS_FOLDER=~/eris/storage # or any folder you have access to
-mkdir -p $ERIS_FOLDER
 export ERIS_STORE_URL="badger+file://$ERIS_FOLDER?put&get"
 ```
 
@@ -70,7 +69,8 @@ eris-go server -coap 127.0.0.1:5683 -http 127.0.0.1:8080 -encode -decode
 ```
 
 > [!TIP]
-> the `-encode` and `-decode` parameters are necessary if you want to transfer files from/to and classic file-system.
+> The `-encode` and `-decode` parameters are necessary if you want to transfer files from/to and classic file-system.
+> You could also use `-mountpoint ~/eris/mount` to create a mountpoint to access URNs later.
 
 ## Adding files to your server
 
