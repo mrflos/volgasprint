@@ -43,7 +43,7 @@ services.eris-server {
 
 ### Choosing a backend store
 
-We need to choose one of the backends to use for the server. For local usage, BADGERDB is recommended et for network storage COAP+TCP
+We need to choose one of the backends to use for the server. For local usage, BADGERDB is recommended and for network storage, it is COAP+TCP.
 
 | Backend     | Url syntax                             | Comment                       |
 | ----------- | -------------------------------------- | ----------------------------- |
