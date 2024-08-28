@@ -16,20 +16,34 @@ You can do a `go build` in the source code folder to compile your own (supported
 
 We can move the binary to an accessible path `cp eris-go /usr/local/bin/eris-go`.
 
-### Use the nix package 
+### Or use the nix package 
 
 You can run `nix-shell -p eris-go` to get the program in a temporary shell, or add the `eris-go` package to your configuration to have it permanently.
 
-### Use the nix module 
+### Or install the ERIS server as a service with the nix module 
 
 There also is a convenient nix module to get your `eris-go` server running on Nix OS [with configuration options](https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server).
+
 ```nix
-x
+services.eris-server {
+  enable = true;
+  backends = [
+      "badger+file:///var/eris?put&get" # local one on /var/eris
+      # "coap+tcp://eris.example.com:5683?get" # an online one
+  ];
+  mountpoint = "/mnt/media/eris"; # useful to mount eris-fs folders
+  listenHttp = ":8080"; # or "[::1]:8080"
+  listenCoap = ":5683"; # or "[::1]:5683"
+  decode = true; # for http access via https://127.0.0.1:8080/uri-res/N2R?urn:eris:...
+  package = pkgs.eris-go; # default package
+};
 ```
 
 ## Starting your server
 
-### Choosing a backend
+### Choosing a backend store
+
+We need to choose one of the backends to use for the server. For local usage, BADGERDB is recommended et for network storage COAP+TCP
 
 | Backend     | Url syntax                             | Comment                       |
 | ----------- | -------------------------------------- | ----------------------------- |
@@ -50,6 +64,7 @@ x
 You can use **9p address**, **coap host:port** and **http host:port**.
 All the three together is possible, but only one option per protocol.
 
+### Launch the server with chosen options
 
 In order to get your ERIS server to start you need to export in your environment `ERIS_STORE_URL` that may contain one or more resources urls to ERIS servers, separated by spaces.
 
@@ -89,27 +104,63 @@ eris-go put -convergent < /path/to/file
 This command returns an URN that identifies the content sent.
 
 > [!WARNING]
-> This URN is the only way to access your file, so maybe save it somether, like as a file, like in the example below. 
+> This URN is the only way to access your file, so maybe save it somewhere, like as a file, like in the example below. 
 
 ```bash
 eris-go put -convergent < /path/to/file > ~/eris/*file*.eris
 ```
 
+You can add folders by creating an eris-fs URN with
+```bash
+eris-go put -convergent < /path/to/file > ~/eris/*file*.eris
+```
+
+
 ## Getting files from your server
 
 ### Copy to your filesystem
 
+```bash
+eris-go get urn:eris:YOUR_URN > /path/to/file.ext
+```
 
+Where `YOUR_URN` should be replaced by your actual URN.
+
+### Launch in an application
+
+Piping in a media player (for example) is also possible
+
+```bash
+eris-go get urn:eris:YOUR_URN | mpv -
+```
 
 ### Stream to your media player
 
-You can access an URN from `http://127.0.0.1:8080/uri-res/N2R?urn:eris:XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`
+You can access an URN from `http://127.0.0.1:8080/uri-res/N2R?urn:eris:YOUR_URN`
+
+Where `YOUR_URN` should be replaced by your actual URN.
 
 You could open it as a network media source in VLC or mpv
 
+### Access eris-fs folders
+
+The simplest way is to use a fuse mounted URN from the `~/eris/mount/urn:eris:YOUR_URN`.
+
+Where `YOUR_URN` should be replaced by the actual eris-fs folder URN.
+
+
 ## Add another server to your server
 
-## Public read-only, local read-write servers
+If somebody is sharing his storage backend Url with you, you can add it to your server by:
+
+- stopping the running server
+- add the new backend url to your ERIS_STORE_URL with a space to separate them
+```bash
+ERIS_STORE_URL = "$ERIS_STORE_URL coap+tcp://192.168.1.220:5683?get"
+```
+- restart your server
+
+Now the URNs from this new server are available.
 
 ## Resources
 
