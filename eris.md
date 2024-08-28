@@ -1,6 +1,6 @@
-# ERIS Cookbook
+# ERIS in Nix cookbook
 
-This document is just a quick tutorial for getting started with ERIS.
+This document is just a quick tutorial for getting started with ERIS in a Nix OS environment.
 
 ## What is ERIS ?
 
@@ -22,8 +22,7 @@ You can run `nix-shell -p eris-go` to get the program in a temporary shell, or a
 
 ### Use the nix module 
 
-There also is a convenient nix module to get your `eris-go` server running on Nix OS cf. <https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server>
-
+There also is a convenient nix module to get your `eris-go` server running on Nix OS [with configuration options](https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server).
 ```nix
 x
 ```
@@ -72,6 +71,14 @@ eris-go server -coap 127.0.0.1:5683 -http 127.0.0.1:8080 -encode -decode
 > The `-encode` and `-decode` parameters are necessary if you want to transfer files from/to and classic file-system.
 > You could also use `-mountpoint ~/eris/mount` to create a mountpoint to access URNs later.
 
+## Using the client to access storage
+
+We are using the coap protocol to let the client access the ERIS server, so we update the `ERIS_STORE_URL`.
+
+```bash
+export ERIS_STORE_URL="coap+tcp://127.0.0.1:5683?put&get"
+```
+
 ## Adding files to your server
 
 We need the `-convergent` argument to encode the files.
@@ -82,7 +89,7 @@ eris-go put -convergent < /path/to/file
 This command returns an URN that identifies the content sent.
 
 > [!WARNING]
-> This URN is the only 
+> This URN is the only way to access your file, so maybe save it somether, like as a file, like in the example below. 
 
 ```bash
 eris-go put -convergent < /path/to/file > ~/eris/*file*.eris
