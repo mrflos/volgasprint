@@ -29,12 +29,12 @@ export default defineConfig({
         items: [
           { text: 'The Nix cache server', link: '/nix-cache-server' },
           { text: 'Packaging YesWiki', link: '/yeswiki' },
+          { text: 'ERIS in Nix OS cookbook', link: '/eris' },
         ]
       },
       {
         text: 'Other projects / misc',
         items: [
-          { text: 'ERIS Cookbook', link: '/eris' },
           { text: 'Basics in electronics', link: '/electronics' },
           { text: 'Tips and tricks', link: '/tips-n-tricks' },
           { text: 'Links', link: '/links' },
