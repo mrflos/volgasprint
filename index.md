@@ -36,3 +36,7 @@ features:
     link: /links
 ---
 
+<br />
+<br />
+
+![VolgaSprint Eagle Secret Society](/volgasprint-eagle-secret-society.jpg)
