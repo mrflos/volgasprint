@@ -25,7 +25,7 @@ You can run `nix-shell -p eris-go` to get the program in a temporary shell, or a
 There also is a convenient nix module to get your `eris-go` server running on Nix OS [with configuration options](https://search.nixos.org/options?channel=24.05&from=0&size=50&sort=relevance&type=packages&query=eris-server).
 
 ```nix
-services.eris-server {
+services.eris-server = {
   enable = true;
   backends = [
       "badger+file:///var/eris?put&get" # local one on /var/eris
