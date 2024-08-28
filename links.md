@@ -10,3 +10,7 @@
 - <https://yggdrasil-network.github.io/> : Yggdrasil network
 - <https://eris.codeberg.page/> : Encoding for Robust Immutable Storage
 - <https://eaglemode.sourceforge.net/index.html> : Eaglemode, zoomable user interface
+
+## Misc
+
+- <https://radioshanson.ru/> : Russian radio for "shanson"
